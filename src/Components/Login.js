@@ -1,10 +1,16 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect } from 'react';
 
 const RegistrationForm = () => {
   const initialvalues={username:"",email:"" ,password:""};
   const[data,setData] =useState(initialvalues);
   const[error,setError] =useState({});
   const[isSubmit,setIsSubmit] =useState(false);
+
+  const submit= ()=>{
+   
+   
+
+  }
 
   const handlesubmit = (e) =>{
     e.preventDefault();
@@ -68,8 +74,10 @@ const RegistrationForm = () => {
         <p>{error.password}</p>
 
         <div>
-         <button className='btn btn-primary mb-2'>submit</button>
-           
+         <button className='btn btn-primary mb-2'>submit</button> 
+        </div>
+        <div>
+        
         </div>
   
      

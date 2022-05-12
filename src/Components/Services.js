@@ -3,8 +3,10 @@ import axios from 'axios';
 import react, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
-const Services = () => {
-  const [data, setData] = useState([])
+
+const Services = (props) => {
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     fetchdata()
 
@@ -14,15 +16,20 @@ const Services = () => {
     setData(response.data)
   }
 
-  const deleteuser = async Name => {
-    await axios.delete(`https://localhost:44317/api/UserRegistrations/${Name}`);
+  const deleteuser = async (id) => {
+    await axios.delete(`https://localhost:44317/api/UserRegistrations/${id}`);
     fetchdata()
   }
+  const [mode, setmode] = useState('light');
   return (
     <>
       <div className='container-fluid mb-5'>
 
-        <table className="table border shadow ">
+    
+        <div>
+          <h1 className='text-center'>Customers who’ve trusted Max Life Insurance</h1>
+        </div>
+        <table className={`table border shadow table-bordered text-center  ${props.mode}`}>
           <thead className='table-dark' >
             <tr>
               <th scope="col">Id</th>
@@ -30,7 +37,7 @@ const Services = () => {
               <th scope="col">email</th>
               <th scope="col">Gender</th>
               <th scope="col">Username</th>
-              <th scope="col">Password</th>
+             
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -42,12 +49,11 @@ const Services = () => {
                 <td>{x.Email}</td>
                 <td>{x.Gender}</td>
                 <td>{x.Username}</td>
-                <td>{x.password}</td>
+                
                 <td>
-
-                  <button className='btn btn-outline-primary ml-2 '>view</button>
-                  <button className='btn btn-outline-warning mr-2' data-toggle="modal" data-target="#exampleModalCenter">edit</button>
-                  <button className='btn btn-outline-danger' onClick={() => deleteuser(data.Name)}>delet</button>
+                  <Link className='btn btn-outline-primary m-2 ' to={`/user/${x.id}`}>view</Link>
+                  <Link className='btn btn-outline-warning m-2' to={`/edit/${x.id}`} >edit</Link>
+                  <button className='btn btn-outline-danger' onClick={(e) => deleteuser(x.id)}>delet</button>
                 </td>
               </tr>
             ))}

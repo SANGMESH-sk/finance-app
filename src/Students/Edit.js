@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams,useNavigate } from 'react-router-dom';
 
 
 
+
 import { Container, Col, Form, Row, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const Addstudent = () => {
-  let navigate = useNavigate();
+const Edit = () => {
+let navigate = useNavigate();
+const {id} = useParams();
+
+
   const [user, setUser] = useState({
     Name: '',
     Email: '',
@@ -18,41 +22,28 @@ const Addstudent = () => {
   )
   const { Name, Email, Gender, Username, Password } = user
 // https://localhost:44317/Help/Api/GET-api-UserRegistrations
-// Addstudent = () => {
-//   axios.post('https://localhost:44317/api/UserRegistrations', {
-//     Name: this.state.Name, Email: this.state.Email,
-//     Gender: this.state.Gender, Username: this.state.Username, Password: this.state.Password
-//   })
-//     .then(json => {
-//       if (json.data.Status === 'Success') {
-//         console.log(json.data.Status);
-//         alert("Data Save Successfully");
-//         this.props.history.push('/Studentlist')
-//       }
-//       else {
-//         alert('Data  Saved');
-//         debugger;
-//         this.props.history.push('/');
-//       }
-//     })
-// }
-
 const handleChange = (e) => {
   setUser({...user, [e.target.name]: e.target.value });
 };
 const onSubmit =async (e) =>{
   e.preventDefault();
-  await axios.post('https://localhost:44317/api/UserRegistrations', user);
+  await axios.put(`https://localhost:44317/api/UserRegistrations/${id}`, user);
   alert('data submited successfully');
   navigate('/services');
-
 }
+const loadUser=async() =>{
+  const response = await axios.get(`https://localhost:44317/api/UserRegistrations/${id}`);
+  setUser(response.data)
+}
+useEffect(()=>{
+  loadUser()
+},[]);
 return (
   <Container className="App">
     <div className=''>
 
     </div>
-    <h4 className="PageHeading">Enter Insurence Informations</h4>
+    <h4 className="PageHeading">edit  User</h4>
     <Form className="form" >
       <Col>
         <FormGroup row>
@@ -107,4 +98,4 @@ return (
 
 }
 
-export default Addstudent;  
+export default Edit;  

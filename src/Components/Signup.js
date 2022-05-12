@@ -28,6 +28,9 @@ const validation = ({ error, ...rest }) => {
 
     return checkValidation;
 };
+const signup=()=>{
+    alert('thankyou fo signup')
+}
 
 export default class Form extends Component {
 
@@ -143,7 +146,7 @@ export default class Form extends Component {
                                         )}
                                     </div>
                                     <div className="d-grid mt-3">
-                                        <button type="submit" className="btn btn-block btn-primary">Submit</button>
+                                        <button type="submit" className="btn btn-block btn-primary" onClick={signup}>Submit</button>
                                     </div>
                                 </form>
                             </div>

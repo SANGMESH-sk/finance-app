@@ -5,7 +5,7 @@ import Card from './Card'
 const CardMap = () => {
 
     return (
-        <div className='my-5'>
+        <div className=''>
             <div className='container-fluid mb-5'>
                 <div className='row'>
                     <div className='row gy-4'>
