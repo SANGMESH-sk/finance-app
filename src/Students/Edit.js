@@ -10,8 +10,6 @@ import { Container, Col, Form, Row, FormGroup, Label, Input, Button } from 'reac
 const Edit = () => {
 let navigate = useNavigate();
 const {id} = useParams();
-
-
   const [user, setUser] = useState({
     Name: '',
     Email: '',
@@ -41,7 +39,6 @@ useEffect(()=>{
 return (
   <Container className="App">
     <div className=''>
-
     </div>
     <h4 className="PageHeading">edit  User</h4>
     <Form className="form" >

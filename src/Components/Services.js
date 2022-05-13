@@ -1,6 +1,5 @@
-
 import axios from 'axios';
-import react, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 
@@ -15,7 +14,6 @@ const Services = (props) => {
     const response = await axios.get("https://localhost:44317/api/UserRegistrations");
     setData(response.data)
   }
-
   const deleteuser = async (id) => {
     await axios.delete(`https://localhost:44317/api/UserRegistrations/${id}`);
     fetchdata()
@@ -24,8 +22,6 @@ const Services = (props) => {
   return (
     <>
       <div className='container-fluid mb-5'>
-
-    
         <div>
           <h1 className='text-center'>Customers who’ve trusted Max Life Insurance</h1>
         </div>
@@ -36,8 +32,7 @@ const Services = (props) => {
               <th scope="col">FirstName</th>
               <th scope="col">email</th>
               <th scope="col">Gender</th>
-              <th scope="col">Username</th>
-             
+              <th scope="col">Username</th>             
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -49,7 +44,6 @@ const Services = (props) => {
                 <td>{x.Email}</td>
                 <td>{x.Gender}</td>
                 <td>{x.Username}</td>
-                
                 <td>
                   <Link className='btn btn-outline-primary m-2 ' to={`/user/${x.id}`}>view</Link>
                   <Link className='btn btn-outline-warning m-2' to={`/edit/${x.id}`} >edit</Link>

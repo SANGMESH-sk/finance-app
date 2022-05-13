@@ -20,10 +20,8 @@ const User = () => {
     useEffect(()=>{
         loadUser()
     })
-
     return (
         <div>
- 
             <div className='container'>
                 <h1 className='display-4'>userid{user.id}</h1>
                 <hr/>
@@ -32,17 +30,10 @@ const User = () => {
                     <li className='list-group-item'>user Email : {user.Email}</li>
                     <li className='list-group-item'>user Gender : {user.Gender}</li>
                     <li className='list-group-item'>user Username : {user.Username}</li>
-                    <li className='list-group-item'>user Password : {user.password}</li>
-                    
+                    <li className='list-group-item'>user Password : {user.password}</li> 
                 </ul>
-
-                <Link className="btn btn-primary" to="/services">Back </Link>
-
-                
+                <Link className="btn btn-outline-danger m-2 " to="/services">Back </Link> 
             </div>
-            
-
-
         </div>
     )
 }

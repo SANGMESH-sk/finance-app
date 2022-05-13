@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState } from "react";
 import Carasoul from './Carasoul';
 import Services from "./Services";
 import Footer from "./Footer"
@@ -6,10 +6,14 @@ import Horizontal from "./HoizontalScroll";
 import CardMap from './CardMap';
 import Card from './Card';
 import Policy from './PolicyHolder';
-import { Link } from "react-router-dom";
+
 
 
 const Home = () => {
+    const [data,setData] = useState('green')
+    const bgcolor=()=>{
+        setData('red');
+    }
     return (
         <>
                 <div className="container-fluid">
@@ -29,8 +33,8 @@ const Home = () => {
                                             <img src="https://www.maxlifeinsurance.com/static-page/assets/homepage/boman-desktop.webp" alt="" style={{ height: '250px', width: '250px' }} />
                                         </div>
                                     </div>
-                                    <div className="mb-3" style={{marginLeft:'20px' }}>
-                                        <Link to="signup" className="btn-get-started">get started</Link>
+                                    <div className="mb-3" style={{marginLeft:'20px',   }}>
+                                        <button  className="btn-get-started" style={{backgroundColor:data}} onClick={bgcolor}>get started</button>
                                     </div>
                                 </div>
                                 <div className="col-md-6  col-sm-12 col-sm order-2 order-lg-l mt-3">

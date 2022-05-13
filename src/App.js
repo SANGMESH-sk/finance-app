@@ -52,7 +52,6 @@ function App() {
         <Route exact path='/student' element={<Addstudent />} />
         <Route exact path='/edit/:id' element={<Edit />} />
         <Route exact path='/user/:id' element={<User />} />
-
       </Routes>
     </div>
   );
